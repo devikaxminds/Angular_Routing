@@ -1,0 +1,19 @@
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h1>{{ title }}</h1>
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/about" routerLinkActive="active" class="nav-link">About</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main content area where routed components will be displayed -->
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>

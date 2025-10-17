@@ -1,0 +1,26 @@
+/* Main content styling */
+.main-content {
+  min-height: calc(100vh - 70px); /* Subtract header height */
+  padding: 2rem;
+  background-color: #f8f9fa;
+}
+
+/* Global app styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Responsive main content */
+@media screen and (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
+}

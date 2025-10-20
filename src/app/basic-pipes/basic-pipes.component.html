@@ -1,0 +1,63 @@
+<div>
+  <h2>Using CurrencyPipe</h2>
+  <p>Price: {{ price | currency }}</p>
+  <p>Price: {{ price | currency:'EUR':'symbol-narrow':'4.2-2' }}</p>
+</div>
+
+<div>
+  <h2>Using DatePipe</h2>
+  <p>Current date: {{ currentDate | date }}</p>
+  <p>Current date: {{ currentDate | date:'fullDate' }}</p>
+  <p>Current date: {{ currentDate | date:'short' }}</p>
+</div>
+
+<div>
+  <h2>Using JsonPipe</h2>
+  <pre>{{ myObject | json }}</pre>
+</div>
+
+<div>
+  <h2>Using LowerCasePipe</h2>
+  <p>Original String: {{ myString }}</p>
+  <p>Lowercased String: {{ myString | lowercase }}</p>
+</div>
+
+<div>
+  <h2>Using UpperCasePipe</h2>
+  <p>Original String: {{ myString }}</p>
+  <p>Uppercased String: {{ myString | uppercase }}</p>
+</div>
+
+<div>
+  <h2>Using PercentPipe</h2>
+  <p>Original Number: {{ myNumber }}</p>
+  <p>Percentage Value: {{ myNumber | percent }}</p>
+</div>
+
+<div>
+  <h2>Using SlicePipe on Array</h2>
+  <p>Original Array: {{ myArray }}</p>
+  <p>Sliced Array: {{ myArray | slice:1:3 }}</p>
+</div>
+
+<div>
+  <h2>Using SlicePipe on String</h2>
+  <p>Original String: {{ longString }}</p>
+  <p>Sliced String: {{ longString | slice:0:7 }}</p>
+</div>
+
+<div>
+  <h2>Using TitleCasePipe</h2>
+  <p>Original String: {{ titleString }}</p>
+  <p>Title Case String: {{ titleString | titlecase }}</p>
+</div>
+
+<div>
+  <h2>Using AsyncPipe with Observable</h2>
+  <p>{{ myObservable$ | async }}</p>
+</div>
+
+<div>
+  <h2>Using AsyncPipe with Promise</h2>
+  <p>{{ myPromise$ | async }}</p>
+</div>

@@ -45,3 +45,14 @@
 .nav-link.active {
   background-color: #007bff;
 }
+
+.logout-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.logout-btn:hover {
+  background-color: #dc3545 !important;
+}

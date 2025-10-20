@@ -24,7 +24,28 @@
         </a>
       </li>
       <li>
-        <button (click)="goToAbout()" class="nav-link" style="background:none;border:none;cursor:pointer;">Go to About (Programmatic)</button>
+        <a routerLink="/edit-profile" 
+           routerLinkActive="active" 
+           class="nav-link">
+          Edit Profile
+        </a>
+      </li>
+      <li>
+        <a routerLink="/login" 
+           routerLinkActive="active" 
+           class="nav-link">
+          Login
+        </a>
+      </li>
+      <li>
+        <button (click)="goToAbout()" class="nav-link" style="background:none;border:none;cursor:pointer;">
+          Go to About (Programmatic)
+        </button>
+      </li>
+      <li *ngIf="isLoggedIn()">
+        <button (click)="logout()" class="nav-link logout-btn">
+          Logout
+        </button>
       </li>
     </ul>
   </div>

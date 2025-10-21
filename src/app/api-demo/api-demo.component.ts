@@ -12,6 +12,9 @@ import { PostService } from '../services/api.service';
 })
 export class ApiDemoComponent {
   responseData: any;
+  allPosts: any[] = [];
+  singlePost: any;
+  postId: number = 1;
 
   constructor(private readonly postService: PostService) {}
 
@@ -27,5 +30,29 @@ export class ApiDemoComponent {
         }
       });
     }
+  }
+
+  getAllPosts() {
+    this.postService.getPosts().subscribe({
+      next: (response) => {
+        this.allPosts = response.slice(0, 10); // Show first 10 posts
+        console.log('All Posts:', response);
+      },
+      error: (err) => {
+        console.error('Error fetching posts:', err);
+      }
+    });
+  }
+
+  getSinglePost() {
+    this.postService.getPost(this.postId).subscribe({
+      next: (response) => {
+        this.singlePost = response;
+        console.log('Single Post:', response);
+      },
+      error: (err) => {
+        console.error('Error fetching post:', err);
+      }
+    });
   }
 }

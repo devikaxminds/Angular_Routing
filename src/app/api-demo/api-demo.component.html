@@ -1,10 +1,10 @@
 <div class="api-demo-container">
-  <h2>API Demo - POST Request</h2>
-  <p>Template-driven form to create a new post using JSONPlaceholder API.</p>
+  <h2>API Demo - HTTP Requests</h2>
+  <p>Template-driven form to perform POST and GET requests using JSONPlaceholder API.</p>
 
-  <!-- Template-driven form -->
+  <!-- POST: Create New Post -->
   <div class="section">
-    <h3>Create New Post</h3>
+    <h3>1. Create New Post (POST)</h3>
     <form #postForm="ngForm" (ngSubmit)="submitPost(postForm)">
       <div class="form-group">
         <label for="title">Title:</label>
@@ -43,23 +43,75 @@
         Submit
       </button>
     </form>
+
+    <!-- POST Response -->
+    <div *ngIf="responseData" class="response-section">
+      <h4>✅ Post Created Successfully!</h4>
+      <div class="response-data">
+        <p><strong>ID:</strong> {{ responseData.id }}</p>
+        <p><strong>Title:</strong> {{ responseData.title }}</p>
+        <p><strong>Body:</strong> {{ responseData.body }}</p>
+        <p><strong>User ID:</strong> {{ responseData.userId }}</p>
+      </div>
+    </div>
   </div>
 
-  <!-- Response Display -->
-  <div *ngIf="responseData" class="response-section">
-    <h4>✅ Post Created Successfully!</h4>
-    <div class="response-data">
-      <p><strong>ID:</strong> {{ responseData.id }}</p>
-      <p><strong>Title:</strong> {{ responseData.title }}</p>
-      <p><strong>Body:</strong> {{ responseData.body }}</p>
-      <p><strong>User ID:</strong> {{ responseData.userId }}</p>
+  <!-- GET: Fetch All Posts -->
+  <div class="section">
+    <h3>2. Get All Posts (GET)</h3>
+    <button (click)="getAllPosts()" class="btn btn-secondary">
+      Get All Posts
+    </button>
+
+    <div *ngIf="allPosts.length > 0" class="response-section">
+      <h4>📋 All Posts (First 10):</h4>
+      <div class="posts-grid">
+        <div *ngFor="let post of allPosts" class="post-card">
+          <h5>{{ post.title }}</h5>
+          <p><strong>ID:</strong> {{ post.id }}</p>
+          <p><strong>User ID:</strong> {{ post.userId }}</p>
+          <p class="post-body">{{ post.body | slice:0:100 }}{{ post.body.length > 100 ? '...' : '' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GET: Fetch Single Post -->
+  <div class="section">
+    <h3>3. Get Single Post by ID (GET)</h3>
+    <div class="form-group">
+      <label for="postId">Post ID:</label>
+      <input 
+        type="number" 
+        id="postId" 
+        [(ngModel)]="postId"
+        min="1" 
+        max="100"
+        placeholder="Enter post ID">
+      <button (click)="getSinglePost()" class="btn btn-secondary">
+        Get Post
+      </button>
+    </div>
+
+    <div *ngIf="singlePost" class="response-section">
+      <h4>📄 Single Post Retrieved:</h4>
+      <div class="single-post">
+        <p><strong>ID:</strong> {{ singlePost.id }}</p>
+        <p><strong>Title:</strong> {{ singlePost.title }}</p>
+        <p><strong>User ID:</strong> {{ singlePost.userId }}</p>
+        <p><strong>Body:</strong> {{ singlePost.body }}</p>
+      </div>
     </div>
   </div>
 
   <!-- API Info -->
   <div class="api-info">
     <h4>🔗 API Information</h4>
-    <p><strong>URL:</strong> https://jsonplaceholder.typicode.com/posts</p>
-    <p><strong>Method:</strong> POST</p>
+    <p><strong>Base URL:</strong> https://jsonplaceholder.typicode.com/posts</p>
+    <ul>
+      <li><strong>POST /posts</strong> - Create a new post</li>
+      <li><strong>GET /posts</strong> - Get all posts</li>
+      <li><strong>GET /posts/:id</strong> - Get a single post by ID</li>
+    </ul>
   </div>
 </div>

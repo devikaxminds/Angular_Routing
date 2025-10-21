@@ -104,6 +104,100 @@
     </div>
   </div>
 
+  <!-- PUT: Update Post -->
+  <div class="section">
+    <h3>4. Update Post by ID (PUT)</h3>
+    <form #updateForm="ngForm" (ngSubmit)="updatePost(updateForm)">
+      <div class="form-group">
+        <label for="updatePostId">Post ID to Update:</label>
+        <input 
+          type="number" 
+          id="updatePostId" 
+          [(ngModel)]="updatePostId"
+          name="updatePostId"
+          min="1" 
+          max="100"
+          placeholder="Enter post ID to update"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="updateTitle">New Title:</label>
+        <input 
+          type="text" 
+          id="updateTitle" 
+          name="title"
+          ngModel
+          placeholder="Enter new post title"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="updateBody">New Body:</label>
+        <textarea 
+          id="updateBody" 
+          name="body"
+          ngModel
+          placeholder="Enter new post content"
+          rows="4"
+          required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="updateUserId">User ID:</label>
+        <input 
+          type="number" 
+          id="updateUserId" 
+          name="userId"
+          ngModel
+          placeholder="Enter user ID"
+          required>
+      </div>
+
+      <button type="submit" class="btn btn-warning">
+        Update Post
+      </button>
+    </form>
+
+    <!-- PUT Response -->
+    <div *ngIf="updateResponse" class="response-section">
+      <h4>✅ Post Updated Successfully!</h4>
+      <div class="response-data">
+        <p><strong>ID:</strong> {{ updateResponse.id }}</p>
+        <p><strong>Title:</strong> {{ updateResponse.title }}</p>
+        <p><strong>Body:</strong> {{ updateResponse.body }}</p>
+        <p><strong>User ID:</strong> {{ updateResponse.userId }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELETE: Delete Post -->
+  <div class="section">
+    <h3>5. Delete Post by ID (DELETE)</h3>
+    <div class="form-group">
+      <label for="deletePostId">Post ID to Delete:</label>
+      <input 
+        type="number" 
+        id="deletePostId" 
+        [(ngModel)]="deletePostId"
+        min="1" 
+        max="100"
+        placeholder="Enter post ID to delete">
+      <button (click)="deletePost()" class="btn btn-danger">
+        Delete Post
+      </button>
+    </div>
+
+    <!-- DELETE Response -->
+    <div *ngIf="deleteResponse" class="response-section">
+      <h4>✅ Post Deleted Successfully!</h4>
+      <div class="response-data">
+        <p><strong>Deleted Post ID:</strong> {{ deleteResponse.id }}</p>
+        <p><strong>Status:</strong> {{ deleteResponse.message }}</p>
+      </div>
+    </div>
+  </div>
+
   <!-- API Info -->
   <div class="api-info">
     <h4>🔗 API Information</h4>
@@ -112,6 +206,8 @@
       <li><strong>POST /posts</strong> - Create a new post</li>
       <li><strong>GET /posts</strong> - Get all posts</li>
       <li><strong>GET /posts/:id</strong> - Get a single post by ID</li>
+      <li><strong>PUT /posts/:id</strong> - Update an existing post</li>
+      <li><strong>DELETE /posts/:id</strong> - Delete a post by ID</li>
     </ul>
   </div>
 </div>

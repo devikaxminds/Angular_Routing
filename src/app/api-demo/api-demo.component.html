@@ -1,0 +1,65 @@
+<div class="api-demo-container">
+  <h2>API Demo - POST Request</h2>
+  <p>Template-driven form to create a new post using JSONPlaceholder API.</p>
+
+  <!-- Template-driven form -->
+  <div class="section">
+    <h3>Create New Post</h3>
+    <form #postForm="ngForm" (ngSubmit)="submitPost(postForm)">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input 
+          type="text" 
+          id="title" 
+          name="title"
+          ngModel
+          placeholder="Enter post title"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="body">Body:</label>
+        <textarea 
+          id="body" 
+          name="body"
+          ngModel
+          placeholder="Enter post content"
+          rows="4"
+          required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="userId">User ID:</label>
+        <input 
+          type="number" 
+          id="userId" 
+          name="userId"
+          ngModel
+          placeholder="Enter user ID"
+          required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        Submit
+      </button>
+    </form>
+  </div>
+
+  <!-- Response Display -->
+  <div *ngIf="responseData" class="response-section">
+    <h4>✅ Post Created Successfully!</h4>
+    <div class="response-data">
+      <p><strong>ID:</strong> {{ responseData.id }}</p>
+      <p><strong>Title:</strong> {{ responseData.title }}</p>
+      <p><strong>Body:</strong> {{ responseData.body }}</p>
+      <p><strong>User ID:</strong> {{ responseData.userId }}</p>
+    </div>
+  </div>
+
+  <!-- API Info -->
+  <div class="api-info">
+    <h4>🔗 API Information</h4>
+    <p><strong>URL:</strong> https://jsonplaceholder.typicode.com/posts</p>
+    <p><strong>Method:</strong> POST</p>
+  </div>
+</div>

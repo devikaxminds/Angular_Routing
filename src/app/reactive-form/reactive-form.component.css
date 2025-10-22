@@ -1,0 +1,101 @@
+.reactive-form-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reactive-form-container h2 {
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.form-group input.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+.form-group input.ng-valid.ng-touched {
+  border-color: #28a745;
+}
+
+.error-messages {
+  margin-top: 5px;
+}
+
+.error-messages small {
+  display: block;
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.form-debug {
+  margin-top: 30px;
+  padding: 15px;
+  background: #e9ecef;
+  border-radius: 4px;
+  border-left: 4px solid #007bff;
+}
+
+.form-debug h3 {
+  margin-top: 0;
+  color: #495057;
+}
+
+.form-debug pre {
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin: 0;
+  white-space: pre-wrap;
+}

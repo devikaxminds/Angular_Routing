@@ -198,16 +198,62 @@
     </div>
   </div>
 
+  <!-- SEARCH: Search Posts with Query Parameters -->
+  <div class="section">
+    <h3>6. Search Posts by User ID (Query Parameters)</h3>
+    <div class="form-group">
+      <label for="searchUserId">User ID to Search:</label>
+      <input 
+        type="number" 
+        id="searchUserId" 
+        [(ngModel)]="searchUserId"
+        min="1" 
+        max="10"
+        placeholder="Enter user ID">
+      <button (click)="searchPostsByUserId()" class="btn btn-info">
+        Search Posts
+      </button>
+    </div>
+
+    <!-- Search Results -->
+    <div *ngIf="searchResults.length > 0" class="response-section">
+      <h4>🔍 Search Results (Posts by User {{ searchUserId }}):</h4>
+      <div class="posts-grid">
+        <div *ngFor="let post of searchResults" class="post-card">
+          <h5>{{ post.title }}</h5>
+          <p><strong>ID:</strong> {{ post.id }}</p>
+          <p><strong>User ID:</strong> {{ post.userId }}</p>
+          <p class="post-body">{{ post.body | slice:0:100 }}{{ post.body.length > 100 ? '...' : '' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- API Info -->
   <div class="api-info">
     <h4>🔗 API Information</h4>
     <p><strong>Base URL:</strong> https://jsonplaceholder.typicode.com/posts</p>
     <ul>
-      <li><strong>POST /posts</strong> - Create a new post</li>
-      <li><strong>GET /posts</strong> - Get all posts</li>
-      <li><strong>GET /posts/:id</strong> - Get a single post by ID</li>
-      <li><strong>PUT /posts/:id</strong> - Update an existing post</li>
-      <li><strong>DELETE /posts/:id</strong> - Delete a post by ID</li>
+      <li><strong>POST /posts</strong> - Create a new post (with query params: source, version)</li>
+      <li><strong>GET /posts</strong> - Get all posts (with query params: _limit, _sort, _order)</li>
+      <li><strong>GET /posts/:id</strong> - Get a single post by ID (with optional _embed=comments)</li>
+      <li><strong>PUT /posts/:id</strong> - Update an existing post (with timestamp query param)</li>
+      <li><strong>DELETE /posts/:id</strong> - Delete a post by ID (with confirm=true query param)</li>
+      <li><strong>GET /posts?userId=X</strong> - Search posts by user ID (with limit query param)</li>
     </ul>
+    <p><strong>Query Parameters Examples:</strong></p>
+    <ul>
+      <li>_limit=10 - Limit results to 10 items</li>
+      <li>_sort=id&_order=desc - Sort by ID in descending order</li>
+      <li>userId=1 - Filter posts by user ID</li>
+      <li>_embed=comments - Include related comments</li>
+    </ul>
+    
+    <h4>🔐 HTTP Interceptors</h4>
+    <p><strong>Active Interceptors:</strong></p>
+    <ul>
+      <li><strong>AuthInterceptor</strong> - Prints a message when request is intercepted</li>
+    </ul>
+    <p><strong>Note:</strong> Check the browser console to see interceptor logs when making API requests!</p>
   </div>
 </div>

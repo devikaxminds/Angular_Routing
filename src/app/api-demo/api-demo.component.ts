@@ -19,6 +19,8 @@ export class ApiDemoComponent {
   updatePostId: number = 1;
   deleteResponse: any;
   deletePostId: number = 1;
+  searchResults: any[] = [];
+  searchUserId: number = 1;
 
   constructor(private readonly postService: PostService) {}
 
@@ -82,6 +84,18 @@ export class ApiDemoComponent {
       },
       error: (err) => {
         console.error('Error deleting post:', err);
+      }
+    });
+  }
+
+  searchPostsByUserId() {
+    this.postService.searchPosts({ userId: this.searchUserId, limit: 5 }).subscribe({
+      next: (response) => {
+        this.searchResults = response;
+        console.log('Search Results:', response);
+      },
+      error: (err) => {
+        console.error('Error searching posts:', err);
       }
     });
   }
